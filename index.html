@@ -11,20 +11,23 @@
     <script>
       
       const hash = window.location.hash;
-      let response, token, id, profileInfo;
+      const info = document.getElementById('info');
+      let response;
+      let user = {};
 
       if (hash) {
-        token = hash.slice(hash.indexOf('=') + 1, hash.indexOf('&'));
-        id = hash.slice(hash.indexOf('id') + 3);
-        console.log('Token ' + token);
-        console.log('ID ' + id);
+        user.token = hash.slice(hash.indexOf('=') + 1, hash.indexOf('&'));
+        user.id = hash.slice(hash.indexOf('id') + 3);
+        console.log('Token ' + user.token);
+        console.log('ID ' + user.id);
       }
       
       let script = document.createElement('SCRIPT');
-        script.src = 'https://api.vk.com/method/users.get?user_ids=' + id + '&fields=bdate&v=5.68&callback=callbackFunc';
+        script.src = 'https://api.vk.com/method/users.get?user_ids=' + user.id + '&fields=bdate&v=5.68&callback=callbackFunc';
         document.getElementsByTagName('head')[0].appendChild(script);
         function callbackFunc(result) {
-            profileInfo = result.response[0].first_name + ' ' + result.response[0].last_name;
+            user.profileInfo = result.response[0].first_name + ' ' + result.response[0].last_name;
+            info.innerHTML += 'Пользователь: ' + user.profileInfo;
         }
       
       /*let xhr = new XMLHttpRequest();
@@ -39,9 +42,9 @@
         response = xhr.responseText;
       }*/
       
-      const info = document.getElementById('info');
+      
             
-      info.innerHTML += 'Пользователь: ' + profileInfo;
+      
       
       const authButton = document.getElementById('auth-button');
       
