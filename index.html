@@ -11,7 +11,7 @@
     <script>
       
       const hash = window.location.hash;
-      let response, token, id;
+      let response, token, id, profileInfo;
 
       if (hash) {
         token = hash.slice(hash.indexOf('=') + 1, hash.indexOf('&'));
@@ -24,7 +24,7 @@
         script.src = 'https://api.vk.com/method/users.get?user_ids=' + id + '&fields=bdate&v=5.68&callback=callbackFunc';
         document.getElementsByTagName('head')[0].appendChild(script);
         function callbackFunc(result) {
-            alert(result.response[0].first_name)
+            profileInfo = result.response[0].first_name + ' ' + result.response[0].last_name;
         }
       
       /*let xhr = new XMLHttpRequest();
@@ -39,10 +39,9 @@
         response = xhr.responseText;
       }*/
       
-      /*const info = document.getElementById('info');
-      let profileInfo = JSON.parse(response);
-      
-      info.innerHTML += 'Пользователь: ' + profileInfo.response.first_name + ' ' + profileInfo.response.last_name;
+      const info = document.getElementById('info');
+            
+      info.innerHTML += 'Пользователь: ' + profileInfo;
       
       const authButton = document.getElementById('auth-button');*/
       
