@@ -31,10 +31,9 @@
             info.innerHTML += 'Пользователь: ' + user.profileInfo + '\n';
         }
 
-        /*let script2 = document.createElement('SCRIPT');
-        script2.src = 'https://api.vk.com/method/friends.search?user_id=' + user.id + '&access_token=' + user.token + 'count=5&v=5.68&callback=callbackFunc';
-        document.getElementsByTagName('head')[0].appendChild(script2);
-        function callbackFunc(result) {
+        src = 'https://api.vk.com/method/friends.search?user_id=' + user.id + '&access_token=' + user.token + 'count=5&v=5.68&callback=addFriends';
+        addScript(src);
+        function addFriends(result) {
             let friends = result.response[0].items;
             user.friends = [];
             for (let i = 0; i < friends.length; i++) {
@@ -42,7 +41,7 @@
                 info.innerHTML += 'Друг ' + (i + 1) + ' ' + user.friends[i] + '\n';
             }
             
-        }*/
+        }
       function addScript(src) {
           let script = document.createElement('SCRIPT');
           script.src = src;
