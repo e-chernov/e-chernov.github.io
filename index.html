@@ -8,12 +8,14 @@
   <body>
     <button id="auth-button"><a href="https://oauth.vk.com/authorize?client_id=6223974&display=page&redirect_uri=https://e-chernov.github.io&scope=friends&response_type=token&v=5.52">Авторизоваться</a></button>
     <div id="info"></div>
+    <div id="friends"></div>
     <script>
 
         
             
       const hash = window.location.hash;
       const info = document.getElementById('info');
+      const friendsElem = document.getElementById('friends');
       let response, src;
       let user = {};
 
@@ -39,7 +41,7 @@
             user.friends = [];
             for (let i = 0; i < friends.length; i++) {
                 user.friends[i] = friends[i].first_name + ' ' + friends[i].last_name;
-                info.innerHTML += 'Друг ' + (i + 1) + ' ' + user.friends[i] + '\n';
+                friendsElem.innerHTML += 'Друг ' + (i + 1) + ' ' + user.friends[i] + '\n';
             }
             
         }
