@@ -11,13 +11,22 @@
     <script>
       
       const hash = window.location.hash;
-      let response, token;
+      let response, token, id;
+
       if (hash) {
         token = hash.slice(hash.indexOf('=') + 1, hash.indexOf('&'));
+        id = hash.slice(hash.indexOf('id' + 3));
         console.log('Token ' + token);
       }
       
-      let xhr = new XMLHttpRequest();
+      let script = document.createElement('SCRIPT');
+        script.src = 'https://api.vk.com/method/users.get?user_ids=' + id + '&fields=bdate&v=5.68&callback=callbackFunc';
+        document.getElementsByTagName('head')[0].appendChild(script);
+        function callbackFunc(result) {
+            alert(result.response[0].first_name)
+        }
+      
+      /*let xhr = new XMLHttpRequest();
       xhr.open('GET', 'https://api.vk.com/method/account.getProfileInfo&access_token=' + token + '&v=V ', true);
       xhr.send();
       xhr.onreadystatechange = function() {
@@ -27,7 +36,7 @@
           return;
         }
         response = xhr.responseText;
-      }
+      }*/
       
       const info = document.getElementById('info');
       let profileInfo = JSON.parse(response);
