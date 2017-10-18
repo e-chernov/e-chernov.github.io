@@ -17,6 +17,7 @@
         token = hash.slice(hash.indexOf('=') + 1, hash.indexOf('&'));
         id = hash.slice(hash.indexOf('id' + 3));
         console.log('Token ' + token);
+        console.log('ID ' + id);
       }
       
       let script = document.createElement('SCRIPT');
@@ -38,12 +39,12 @@
         response = xhr.responseText;
       }*/
       
-      const info = document.getElementById('info');
+      /*const info = document.getElementById('info');
       let profileInfo = JSON.parse(response);
       
       info.innerHTML += 'Пользователь: ' + profileInfo.response.first_name + ' ' + profileInfo.response.last_name;
       
-      const authButton = document.getElementById('auth-button');
+      const authButton = document.getElementById('auth-button');*/
       
       authButton.onclick = function() {
         window.location = 'https://oauth.vk.com/authorize?client_id=6223974&display=page&redirect_uri=https://e-chernov.github.io&scope=friends&response_type=token&v=5.52';
