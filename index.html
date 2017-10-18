@@ -34,6 +34,7 @@
         src = 'https://api.vk.com/method/friends.search?user_id=' + user.id + '&access_token=' + user.token + 'count=5&v=5.68&callback=addFriends';
         addScript(src);
         function addFriends(result) {
+            alert(response);
             let friends = result.response.items;
             user.friends = [];
             for (let i = 0; i < friends.length; i++) {
