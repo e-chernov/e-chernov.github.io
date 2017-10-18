@@ -14,7 +14,7 @@
             
       const hash = window.location.hash;
       const info = document.getElementById('info');
-      let response;
+      let response, src;
       let user = {};
 
       if (hash) {
@@ -24,10 +24,9 @@
         console.log('Token ' + user.token);
         console.log('ID ' + user.id);
       
-      let script1 = document.createElement('SCRIPT');
-        script1.src = 'https://api.vk.com/method/users.get?user_ids=' + user.id + '&fields=bdate&v=5.68&callback=callbackFunc';
-        document.getElementsByTagName('head')[0].appendChild(script1);
-        function callbackFunc(result) {
+        src = 'https://api.vk.com/method/users.get?user_ids=' + user.id + '&fields=bdate&v=5.68&callback=addProfileInfo';
+        addScript(src);
+        function addProfileInfo(result) {
             user.profileInfo = result.response[0].first_name + ' ' + result.response[0].last_name;
             info.innerHTML += 'Пользователь: ' + user.profileInfo + '\n';
         }
@@ -44,7 +43,11 @@
             }
             
         }*/
-      
+      function addScript(src) {
+          let script = document.createElement('SCRIPT');
+          script.src = src;
+          document.getElementsByTagName('head')[0].appendChild(script);
+      }
       /*let xhr = new XMLHttpRequest();
       xhr.open('GET', 'https://api.vk.com/method/account.getProfileInfo&access_token=' + token + '&v=V ', true);
       xhr.send();
@@ -63,10 +66,7 @@
       
       const authButton = document.getElementById('auth-button');
       
-      authButton.onclick = function() {
-        window.location = 'https://oauth.vk.com/authorize?client_id=6223974&display=page&redirect_uri=https://e-chernov.github.io&scope=friends&response_type=token&v=5.52';
-      }
-      /*//https://oauth.vk.com/authorize?client_id=6223974&display=page&redirect_uri=https://e-chernov.github.io&scope=friends&response_type=token&v=5.52
+     /*//https://oauth.vk.com/authorize?client_id=6223974&display=page&redirect_uri=https://e-chernov.github.io&scope=friends&response_type=token&v=5.52
 
       //https://oauth.vk.com/blank.html#access_token=6170a4a52ca7bebb146159035b1e40af16ebebbef175b082e4b8e9917042b1595a8bbcd98d673d0e846b6&expires_in=86400&user_id=56616468
     */
