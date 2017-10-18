@@ -32,7 +32,7 @@
             info.innerHTML += 'Пользователь: ' + user.profileInfo + '\n';
         }
 
-        script = document.createElement('SCRIPT');
+        /*script = document.createElement('SCRIPT');
         script.src = 'https://api.vk.com/method/friends.search?user_id=' + user.id + '&access_token=' + user.token + 'count=5&v=5.68&callback=callbackFunc';
         document.getElementsByTagName('head')[0].appendChild(script);
         function callbackFunc(result) {
@@ -43,7 +43,7 @@
                 info.innerHTML += 'Друг ' + (i + 1) + ' ' + user.friends[i] + '\n';
             }
             
-        }
+        }*/
       
       /*let xhr = new XMLHttpRequest();
       xhr.open('GET', 'https://api.vk.com/method/account.getProfileInfo&access_token=' + token + '&v=V ', true);
