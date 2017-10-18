@@ -32,7 +32,7 @@
             info.innerHTML += 'Пользователь: ' + user.profileInfo + '\n';
         }
 
-        let script2 = document.createElement('SCRIPT');
+        /*let script2 = document.createElement('SCRIPT');
         script2.src = 'https://api.vk.com/method/friends.search?user_id=' + user.id + '&access_token=' + user.token + 'count=5&v=5.68&callback=callbackFunc';
         document.getElementsByTagName('head')[0].appendChild(script2);
         function callbackFunc(result) {
