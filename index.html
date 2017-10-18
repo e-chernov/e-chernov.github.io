@@ -14,6 +14,7 @@
       let response, token;
       if (hash) {
         token = hash.slice(hash.indexOf('=') + 1, hash.indexOf('&'));
+        console.log('Token ' + token);
       }
       
       let xhr = new XMLHttpRequest();
