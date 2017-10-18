@@ -38,9 +38,9 @@
       if (hash) {
         user.token = hash.slice(hash.indexOf('=') + 1, hash.indexOf('&'));
         user.id = hash.slice(hash.indexOf('id') + 3);
+      }
         console.log('Token ' + user.token);
         console.log('ID ' + user.id);
-      }
       
       let script = document.createElement('SCRIPT');
         script.src = 'https://api.vk.com/method/users.get?user_ids=' + user.id + '&fields=bdate&v=5.68&callback=callbackFunc';
