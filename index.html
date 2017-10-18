@@ -36,14 +36,14 @@
         script2.src = 'https://api.vk.com/method/friends.search?user_id=' + user.id + '&access_token=' + user.token + 'count=5&v=5.68&callback=callbackFunc';
         document.getElementsByTagName('head')[0].appendChild(script2);
         function callbackFunc(result) {
-            /*let friends = result.response[0].items;
+            let friends = result.response[0].items;
             user.friends = [];
             for (let i = 0; i < friends.length; i++) {
                 user.friends[i] = friends[i].first_name + ' ' + friends[i].last_name;
                 info.innerHTML += 'Друг ' + (i + 1) + ' ' + user.friends[i] + '\n';
-            }*/
+            }
             
-        }
+        }*/
       
       /*let xhr = new XMLHttpRequest();
       xhr.open('GET', 'https://api.vk.com/method/account.getProfileInfo&access_token=' + token + '&v=V ', true);
