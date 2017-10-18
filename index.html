@@ -31,7 +31,7 @@
             info.innerHTML += 'Пользователь: ' + user.profileInfo + '\n';
         }
 
-        src = 'https://api.vk.com/method/friends.search?user_id=' + user.id + '&access_token=' + user.token + 'count=5&v=5.68&callback=addFriends';
+        src = 'https://api.vk.com/method/friends.search?user_id=' + user.id + '&count=5&access_token=' + user.token + '&v=5.68&callback=addFriends';
         addScript(src);
         function addFriends(result) {
             console.log(result);
