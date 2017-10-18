@@ -2,8 +2,7 @@
 <html>
 
   <head>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    
   </head>
 
   <body>
@@ -12,9 +11,9 @@
     <script>
       
       const hash = window.location.hash;
-      let response;
+      let response, token;
       if (hash) {
-        const token = hash.slice(hash.indexOf('=') + 1, hash.indexOf('&'));
+        token = hash.slice(hash.indexOf('=') + 1, hash.indexOf('&'));
       }
       
       let xhr = new XMLHttpRequest();
