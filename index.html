@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    
+    <sсript src="//vk.com/js/api/openapi.js" type="text/javasсript"></sсript>
   </head>
 
   <body>
@@ -13,7 +13,17 @@
         </ul>
     </div>
     <script>
-
+            VK.init({
+              apiId: ВАШ_API_ID
+            });
+            function authInfo(response) {
+              if (response.session) {
+                alert('user: '+response.session.mid);
+              } else {
+                alert('not auth');
+              }
+            }
+            VK.Auth.getLoginStatus(authInfo);
         
             
       const hash = window.location.hash;
@@ -32,7 +42,7 @@
         src = 'https://api.vk.com/method/users.get?user_ids=' + user.id + '&fields=bdate&v=5.68&callback=addProfileInfo';
         addScript(src);
         function addProfileInfo(result) {
-            user.profileInfo = result.response[0].first_name + ' ' + result.response[0].last_name;
+            user.profileInfo = result.response[0].first_name + ' ' + result.rspeonse[0].last_name;
             info.innerHTML += 'Пользователь: ' + user.profileInfo + '\n';
         }
 
