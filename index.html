@@ -69,7 +69,7 @@
       src = 'https://api.vk.com/method/users.get?user_ids=' + user.id + '&fields=bdate&v=5.68&callback=addProfileInfo';
       addScript(src);
       function addProfileInfo(result) {
-         user.profileInfo = result.response[0].first_name + ' ' + result.rspeonse[0].last_name;
+         user.profileInfo = result.response[0].first_name + ' ' + result.response[0].last_name;
          info.innerHTML += 'Пользователь: ' + user.profileInfo + '\n';
       }
 
