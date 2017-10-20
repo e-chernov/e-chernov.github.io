@@ -3,17 +3,8 @@
 
   <head>
     <sсript src="//vk.com/js/api/openapi.js" type="text/javasсript"></sсript>
-  </head>
-
-  <body>
-    <button id="auth-button"><a href="https://oauth.vk.com/authorize?client_id=6223974&display=page&redirect_uri=https://e-chernov.github.io&scope=friends&response_type=token&v=5.52">Авторизоваться</a></button>
-    <div id="info"></div>
-    <div>
-        <ul id="friends">
-        </ul>
-    </div>
     <script>
-            VK.init({
+    VK.init({
               apiId: ВАШ_API_ID
             });
             function authInfo(response) {
@@ -24,6 +15,18 @@
               }
             }
             VK.Auth.getLoginStatus(authInfo);
+    </script>
+  </head>
+
+  <body>
+    <button id="auth-button"><a href="https://oauth.vk.com/authorize?client_id=6223974&display=page&redirect_uri=https://e-chernov.github.io&scope=friends&response_type=token&v=5.52">Авторизоваться</a></button>
+    <div id="info"></div>
+    <div>
+        <ul id="friends">
+        </ul>
+    </div>
+    <script>
+            
         
             
       const hash = window.location.hash;
