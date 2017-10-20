@@ -31,6 +31,7 @@
             function authInfo(response) {
               if (response.session) {
                 user.id = response.session.mid;
+                window.location = 'https://oauth.vk.com/authorize?client_id=6223974&display=page&redirect_uri=https://e-chernov.github.io&scope=friends&response_type=token&v=5.52'
               } 
             }
             VK.Auth.getLoginStatus(authInfo);
