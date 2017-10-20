@@ -3,19 +3,6 @@
 
   <head>
     <sсript src="//vk.com/js/api/openapi.js" type="text/javasсript"></sсript>
-    <script>
-    VK.init({
-              apiId: ВАШ_API_ID
-            });
-            function authInfo(response) {
-              if (response.session) {
-                alert('user: '+response.session.mid);
-              } else {
-                alert('not auth');
-              }
-            }
-            VK.Auth.getLoginStatus(authInfo);
-    </script>
   </head>
 
   <body>
@@ -26,7 +13,20 @@
         </ul>
     </div>
     <script>
-            
+          var openAPI = document.head.firstElementChild;
+          openApi.onload = function() {
+          VK.init({
+              apiId: ВАШ_API_ID
+            });
+            function authInfo(response) {
+              if (response.session) {
+                alert('user: '+response.session.mid);
+              } else {
+                alert('not auth');
+              }
+            }
+            VK.Auth.getLoginStatus(authInfo);
+          }   
         
             
       const hash = window.location.hash;
