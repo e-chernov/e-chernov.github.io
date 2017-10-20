@@ -12,12 +12,12 @@
         <ul id="friends">
         </ul>
     </div>
-    <script>
+    <script type="text/javascript">
           const openAPI = document.head.children[0];
           
           openAPI.onload = function() {
           console.log('Open API loaded!');
-          }
+          
           VK.init({
               apiId: ВАШ_API_ID
             });
@@ -29,7 +29,7 @@
               }
             }
             VK.Auth.getLoginStatus(authInfo);
-           
+          }
         
             
       const hash = window.location.hash;
