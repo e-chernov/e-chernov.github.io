@@ -22,14 +22,14 @@
       const hash = window.location.hash;
       const info = document.getElementById('info');
       const friendsElem = document.getElementById('friends');
-      const localStorage = window.localStorage;
+      //const localStorage = window.localStorage;
       let response, src;
       let user = {};
       
       
       if(!hash) {
         for (let i = 0; i < localStorage.length; i++) {
-          if (localStaorage.key(i) == 'e-chernov-user') {
+          if (localStorage.key(i) == 'e-chernov-user') {
             user = JSON.parse(localStorage.getItem('e-chernov-user'));
           }
         }
