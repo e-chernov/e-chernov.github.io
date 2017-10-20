@@ -13,12 +13,6 @@
         </ul>
     </div>
     <script type="text/javascript">
-         
-          
-          
-          
-        
-            
       const hash = window.location.hash;
       const info = document.getElementById('info');
       const friendsElem = document.getElementById('friends');
@@ -27,12 +21,12 @@
       let user = {};
       
       
-      if(!hash) {
+      if(!hash) {      
         for (let i = 0; i < localStorage.length; i++) {
           if (localStorage.key(i) == 'e-chernov-user') {
             user = JSON.parse(localStorage.getItem('e-chernov-user'));
           }
-        }
+        }       
       }
       
       if (hash) {
@@ -40,43 +34,34 @@
         user.id = hash.slice(hash.indexOf('id') + 3);
         localStorage.setItem('e-chernov-user', JSON.stringify(user));
       }
-        console.log('Token ' + user.token);
-        console.log('ID ' + user.id);
-        
-      
-        src = 'https://api.vk.com/method/users.get?user_ids=' + user.id + '&fields=bdate&v=5.68&callback=addProfileInfo';
-        addScript(src);
-        function addProfileInfo(result) {
-            user.profileInfo = result.response[0].first_name + ' ' + result.rspeonse[0].last_name;
-            info.innerHTML += 'Пользователь: ' + user.profileInfo + '\n';
-        }
-
-        src = 'https://api.vk.com/method/friends.search?user_id=' + user.id + '&count=5&access_token=' + user.token + '&v=5.68&callback=addFriends';
-        addScript(src);
-        function addFriends(result) {
-            let friends = result.response.items;
-            user.friends = [];
-            for (let i = 0; i < friends.length; i++) {
-                user.friends[i] = friends[i].first_name + ' ' + friends[i].last_name;
-                friendsElem.innerHTML += '<li>Друг ' + (i + 1) + ' ' + user.friends[i] + '</li>';
-            }
             
-        }
+      
+      src = 'https://api.vk.com/method/users.get?user_ids=' + user.id + '&fields=bdate&v=5.68&callback=addProfileInfo';
+      addScript(src);
+      function addProfileInfo(result) {
+         user.profileInfo = result.response[0].first_name + ' ' + result.rspeonse[0].last_name;
+         info.innerHTML += 'Пользователь: ' + user.profileInfo + '\n';
+      }
+
+      
+      src = 'https://api.vk.com/method/friends.search?user_id=' + user.id + '&count=5&access_token=' + user.token + '&v=5.68&callback=addFriends';
+      addScript(src);
+      function addFriends(result) {
+         let friends = result.response.items;
+         user.friends = [];
+         for (let i = 0; i < friends.length; i++) {
+            user.friends[i] = friends[i].first_name + ' ' + friends[i].last_name;
+            friendsElem.innerHTML += '<li>Друг ' + (i + 1) + ' ' + user.friends[i] + '</li>';
+         }
+      }
+      
+      
       function addScript(src) {
           let script = document.createElement('SCRIPT');
           script.src = src;
           document.getElementsByTagName('head')[0].appendChild(script);
       }
-      
-            
-      
-      
-      const authButton = document.getElementById('auth-button');
-      
-     /*//https://oauth.vk.com/authorize?client_id=6223974&display=page&redirect_uri=https://e-chernov.github.io&scope=friends&response_type=token&v=5.52
 
-      //https://oauth.vk.com/blank.html#access_token=6170a4a52ca7bebb146159035b1e40af16ebebbef175b082e4b8e9917042b1595a8bbcd98d673d0e846b6&expires_in=86400&user_id=56616468
-    */
     </script>
   </body>
 
