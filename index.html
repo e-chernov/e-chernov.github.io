@@ -24,7 +24,7 @@
       const friendsElem = document.getElementById('friends');
       let response, src;
       let user = {};
-
+      if (!hash) {
       VK.init({
               apiId: 6223974
             });
@@ -35,7 +35,7 @@
               } 
             }
             VK.Auth.getLoginStatus(authInfo);
-
+      }
       if (hash) {
         user.token = hash.slice(hash.indexOf('=') + 1, hash.indexOf('&'));
         user.id = hash.slice(hash.indexOf('id') + 3);
